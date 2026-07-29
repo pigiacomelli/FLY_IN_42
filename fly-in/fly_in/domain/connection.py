@@ -1,3 +1,6 @@
+from .zone import Zone
+
+
 class Connection:
     """Represents a bidirectional connection between two zones."""
 
@@ -12,12 +15,15 @@ class Connection:
         self.max_capacity = max_capacity
 
     def connects(self, zone: Zone) -> bool:
-        """Return whether the connection contains the given zone."""
-        return zone == self.zone_a or zone == self.zone_b
+        """Return whether the zone belongs to this connection."""
+        return zone is self.zone_a or zone is self.zone_b
 
     def other_zone(self, zone: Zone) -> Zone:
-        """Return the zone at the opposite end of the connection."""
-        if zone == self.zone_a:
+        """Return the zone located at the opposite endpoint."""
+        if zone is self.zone_a:
             return self.zone_b
 
-        return self.zone_a
+        if zone is self.zone_b:
+            return self.zone_a
+
+        raise ValueError("Zone does not belong to this connection.")

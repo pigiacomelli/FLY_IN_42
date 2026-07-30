@@ -23,3 +23,5 @@ class MapParseError(FlyInError):
         super().__init__(
             f"Line {line_number}: {message}"
         )
+class MapValidationError(FlyInError):
+    """Raised when a parsed map is semantically invalid."""

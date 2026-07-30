@@ -25,3 +25,6 @@ class MapParseError(FlyInError):
         )
 class MapValidationError(FlyInError):
     """Raised when a parsed map is semantically invalid."""
+    
+class PathNotFoundError(FlyInError):
+    """Raised when no accessible path exists between two zones."""

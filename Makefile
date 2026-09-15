@@ -24,7 +24,8 @@ clean:
 	rm -rf .pytest_cache
 
 lint:
-	uv run flake8 .
+	uv run flake8 . \
+		--exclude=.venv,venv,__pycache__,.pytest_cache,.mypy_cache,build,dist
 	uv run mypy . \
 		--warn-return-any \
 		--warn-unused-ignores \
